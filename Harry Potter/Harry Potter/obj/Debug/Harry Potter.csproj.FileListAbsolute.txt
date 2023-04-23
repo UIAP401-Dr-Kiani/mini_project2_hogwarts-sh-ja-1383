@@ -1,0 +1,8 @@
+C:\Users\Dour-Andish\Desktop\Harry Potter\mini_project2_hogwarts-sh-ja-1383\Harry Potter\Harry Potter\bin\Debug\Harry Potter.exe.config
+C:\Users\Dour-Andish\Desktop\Harry Potter\mini_project2_hogwarts-sh-ja-1383\Harry Potter\Harry Potter\bin\Debug\Harry Potter.exe
+C:\Users\Dour-Andish\Desktop\Harry Potter\mini_project2_hogwarts-sh-ja-1383\Harry Potter\Harry Potter\bin\Debug\Harry Potter.pdb
+C:\Users\Dour-Andish\Desktop\Harry Potter\mini_project2_hogwarts-sh-ja-1383\Harry Potter\Harry Potter\obj\Debug\Harry Potter.csproj.AssemblyReference.cache
+C:\Users\Dour-Andish\Desktop\Harry Potter\mini_project2_hogwarts-sh-ja-1383\Harry Potter\Harry Potter\obj\Debug\Harry Potter.csproj.SuggestedBindingRedirects.cache
+C:\Users\Dour-Andish\Desktop\Harry Potter\mini_project2_hogwarts-sh-ja-1383\Harry Potter\Harry Potter\obj\Debug\Harry Potter.csproj.CoreCompileInputs.cache
+C:\Users\Dour-Andish\Desktop\Harry Potter\mini_project2_hogwarts-sh-ja-1383\Harry Potter\Harry Potter\obj\Debug\Harry Potter.exe
+C:\Users\Dour-Andish\Desktop\Harry Potter\mini_project2_hogwarts-sh-ja-1383\Harry Potter\Harry Potter\obj\Debug\Harry Potter.pdb
