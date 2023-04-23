@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace Harry_Potter
 {
-    internal class Program
+    internal class Dormitory
     {
-        static void Main(string[] args)
-        {
-            
-        }
     }
 }

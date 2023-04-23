@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Harry_Potter
 {
-    internal class Program
+    internal class Teacher : Authorized_Persons
     {
-        static void Main(string[] args)
-        {
-            
-        }
+        public bool TeachingAtTheSameTime;
     }
 }

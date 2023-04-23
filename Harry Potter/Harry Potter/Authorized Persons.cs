@@ -9,11 +9,11 @@ namespace Harry_Potter
     internal class Authorized_Persons : Person
     {
         // برنامه درسی چیه؟ ننوشتمش هنوز
-        enum Pet { rat , cat , owl}
-        // گروه (نوع کلاس گروه) هم نمیدونم چیه ننوشتم هنوز
-        bool HavingSuitcase;
-        enum Job { teacher , student }
-        string Letter { get; set; }
+        public enum Pet { rat , cat , owl}
+        public Group Group { get; set; }
+        public bool HavingSuitcase;
+        public enum Job { teacher , student }
+        public string Letter { get; set; }
 
 
     }
