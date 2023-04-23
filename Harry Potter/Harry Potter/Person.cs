@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Harry_Potter
 {
-    internal class Person : Authorized_Persons
+    internal class Person
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
