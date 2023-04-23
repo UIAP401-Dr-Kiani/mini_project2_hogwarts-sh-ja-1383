@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Harry_Potter
 {
-    internal class Program
+    internal class Plant
     {
-        static void Main(string[] args)
-        {
-            
-        }
+        public string Name { get; set; }
+        public int number { get; set; }
     }
 }
