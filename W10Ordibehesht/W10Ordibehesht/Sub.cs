@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace Harry_Potter
+namespace W10Ordibehesht
 {
-    internal class Program
+    internal static class Sub
     {
-        static void Main(string[] args)
+        public static void Print ()
         {
-            
-            
+            Console.WriteLine("Print something!");
         }
     }
 }

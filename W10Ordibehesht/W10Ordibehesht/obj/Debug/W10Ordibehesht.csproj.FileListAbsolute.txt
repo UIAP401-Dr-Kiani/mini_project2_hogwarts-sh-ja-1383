@@ -1,0 +1,8 @@
+C:\Users\Dour-Andish\Desktop\Harry Potter\mini_project2_hogwarts-sh-ja-1383\W10Ordibehesht\W10Ordibehesht\bin\Debug\W10Ordibehesht.exe.config
+C:\Users\Dour-Andish\Desktop\Harry Potter\mini_project2_hogwarts-sh-ja-1383\W10Ordibehesht\W10Ordibehesht\bin\Debug\W10Ordibehesht.exe
+C:\Users\Dour-Andish\Desktop\Harry Potter\mini_project2_hogwarts-sh-ja-1383\W10Ordibehesht\W10Ordibehesht\bin\Debug\W10Ordibehesht.pdb
+C:\Users\Dour-Andish\Desktop\Harry Potter\mini_project2_hogwarts-sh-ja-1383\W10Ordibehesht\W10Ordibehesht\obj\Debug\W10Ordibehesht.csproj.AssemblyReference.cache
+C:\Users\Dour-Andish\Desktop\Harry Potter\mini_project2_hogwarts-sh-ja-1383\W10Ordibehesht\W10Ordibehesht\obj\Debug\W10Ordibehesht.csproj.SuggestedBindingRedirects.cache
+C:\Users\Dour-Andish\Desktop\Harry Potter\mini_project2_hogwarts-sh-ja-1383\W10Ordibehesht\W10Ordibehesht\obj\Debug\W10Ordibehesht.csproj.CoreCompileInputs.cache
+C:\Users\Dour-Andish\Desktop\Harry Potter\mini_project2_hogwarts-sh-ja-1383\W10Ordibehesht\W10Ordibehesht\obj\Debug\W10Ordibehesht.exe
+C:\Users\Dour-Andish\Desktop\Harry Potter\mini_project2_hogwarts-sh-ja-1383\W10Ordibehesht\W10Ordibehesht\obj\Debug\W10Ordibehesht.pdb
