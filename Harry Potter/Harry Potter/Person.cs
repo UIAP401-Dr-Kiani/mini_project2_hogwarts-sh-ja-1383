@@ -13,8 +13,8 @@ namespace Harry_Potter
         public int YearOfBirth { get; set; }
         public enum Gender { Male, Female }
         public string FatherName { get; set; }
-        public int UserName { get; set; }
-        public int Password { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
         public enum RaceType
         {
             Half_blood ,

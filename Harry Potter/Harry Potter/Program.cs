@@ -20,7 +20,6 @@ namespace Harry_Potter
                 while ((ln = file.ReadLine()) != null)
                 {
                     string[] human = ln.Split('\t').ToArray<string>();
-                    
                     while (true)
                     {
                         Console.WriteLine(
@@ -35,12 +34,49 @@ namespace Harry_Potter
                         {
                             case 1:
                             {
+                                    Console.Write("UserName: ");
+                                    string adminuser = Console.ReadLine();
+                                    Console.Write("Password: ");
+                                    string adminpass = Console.ReadLine();
+                                    Dumbledore dumbledore = new Dumbledore();
+                                    dumbledore.UserName = "11111";
+                                    dumbledore.Password = "00000";
+
+                                    if (adminuser == dumbledore.UserName && adminpass == dumbledore.Password)
+                                    {
+                                        bool stayadmin = true;
+                                        while (stayadmin)
+                                        {
+                                            Console.WriteLine("Choose one: " +
+                                                "\nSending letters to authorized students (s)" +
+                                                "\nExite (e)");
+                                            char voroudi = Convert.ToChar(Console.ReadLine());
+                                            switch (voroudi)
+                                            {
+                                                case 's':
+                                                    {
+                                                        // اینجا واسه ارسال نامه ست ننوشتمش هنوز
+                                                        break;
+                                                    }
+                                                case 'e':
+                                                    {
+                                                        stayadmin = false;
+                                                        break;
+                                                    }
+
+                                                default: { break; }
+                                            }
+                                        }
+                                        
+                                    }
+                                
 
                                 break;
                             }
                             case 2:
                             {
-                                break;
+
+                                    break;
                             }
                             case 3:
                             {
