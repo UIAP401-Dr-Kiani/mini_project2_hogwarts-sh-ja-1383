@@ -13,6 +13,10 @@ namespace Harry_Potter
         public int Term { get; set; }
         public int RoomNumber { get; set; }
         public DateTime traintime { get; set; }
+        public int cabin_number { get; set; }
+        public int seat_number { get; set; }
+        public List <Plant> Collected_plants { get; set; }
+        public int gradeplant { get; set; }
 
         
         public void Enroll (Lesson lesson)
@@ -21,18 +25,18 @@ namespace Harry_Potter
             {
                 lesson.StudentCount++;
                 lessons.Add(lesson);
-                Console.WriteLine($"{FirstName} {LastName} enrolled in {lesson.Name}.");
+                Console.WriteLine($"you enrolled in {lesson.Name}.");
             }
             else
             {
-                Console.WriteLine($"{FirstName} {LastName} Cannot enroll in {lesson.Name}");
+                Console.WriteLine($"you Cannot enroll in {lesson.Name}");
             }
         }
 
 
         public void PrintSchedule ()
         {
-            Console.WriteLine($"Schadule for {FirstName} {LastName} (Term {Term}) : ");
+            Console.WriteLine($"Schadule Term {Term} : ");
             foreach (Lesson lesson in lessons)
             {
                 Console.WriteLine($"{lesson.Time} : {lesson.Name}");

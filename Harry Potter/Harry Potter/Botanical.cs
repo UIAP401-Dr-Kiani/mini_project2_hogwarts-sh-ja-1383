@@ -8,9 +8,11 @@ namespace Harry_Potter
 {
     internal class Botanical : Lesson
     {
-        public List <string> plants_term1 { get; set; }
-        public List <string> plants_term2 { get; set; }
-        public List <string> plants_term3 { get; set; }
-        public List <string> plants_term4 { get; set; }
+        public List <Plant> plants_term1 { get; set; }
+        public List <Plant> plants_term2 { get; set; }
+        public List <Plant> plants_term3 { get; set; }
+        public List <Plant> plants_term4 { get; set; }
+        public List <Plant> all_plants { get; set; }
+        public List <Plant> Exercise_plant { get; set; }
     }
 }

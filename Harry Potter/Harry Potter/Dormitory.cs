@@ -22,31 +22,30 @@ namespace Harry_Potter
         public Dormitory (Group group , Gender gender )
         {
             _group = group;
-            this._gender = gender;
-
-            setcode();
-
+            _gender = gender;
         }
 
-        void setcode()
+        public int setcode
         {
-            if (_bed < 4)
-            {
-                Code++;
-            }
-            else
-            {
-                if (_bed == 4)
+            set {
+                if (_bed < 4)
                 {
-                    _bed = 0;
-                    _room++;
+                    Code++;
                 }
-                if (_room == 9)
+                else
                 {
-                    _room = 0;
-                    _floor++;
+                    if (_bed == 4)
+                    {
+                        _bed = 0;
+                        _room++;
+                    }
+                    if (_room == 9)
+                    {
+                        _room = 0;
+                        _floor++;
+                    }
+                    Code = (_floor * 100) + (_room * 10) + (_bed);
                 }
-                Code = (_floor*100) + ( _room*10) + (_bed);
             }
         }
 

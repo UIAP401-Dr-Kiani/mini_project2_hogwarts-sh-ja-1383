@@ -13,5 +13,7 @@ namespace Harry_Potter
         public int Capacity { get; set; }
         public int Term { get; set; }
         public string Name { get; set; }
+        public int grade { get; set; }
+        public Teacher Teacher { get; set; }
     }
 }

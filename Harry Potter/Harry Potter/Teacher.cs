@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -39,7 +40,18 @@ namespace Harry_Potter
             {
                 Console.WriteLine($"{lesson.Name} cannot teach.");
             }
-
         }
+
+        public void PrintSchedule()
+        {
+            Console.WriteLine("Your class schedule : ");
+            foreach (Lesson lesson in Lessons)
+            {
+                Console.WriteLine($"{lesson.Time} : {lesson.Name}");
+            }
+        }
+
+
+
     }
 }

@@ -18,6 +18,10 @@ namespace Harry_Potter
             List<Teacher> teachers = new List<Teacher>();
             List <Student> students = new List<Student>();
             Dumbledore dumbledore = new Dumbledore();
+            List<Lesson> all_lessons = new List<Lesson>();
+            Botanical botanical = new Botanical();
+
+
 
             using (StreamReader file = new StreamReader("TXT_DATA.tsv"))
             {
@@ -133,7 +137,10 @@ namespace Harry_Potter
                             string adminuser = Console.ReadLine();
                             Console.Write("Password: ");
                             string adminpass = Console.ReadLine();
-                            
+
+
+                            dumbledore.UserName = "Dumbeldore";
+                            dumbledore.Password = "dumbel_pass";
 
                             if (adminuser == dumbledore.UserName && adminpass == dumbledore.Password)
                             {
@@ -142,7 +149,9 @@ namespace Harry_Potter
                                 {
                                     Console.WriteLine("Choose one: " +
                                         "\nSending letters to authorized students (s)" +
+                                        "\nReview of return ticket requests (r)" +
                                         "\nCheck ticket requests again (c)" +
+                                        "\nCheck plants requestes (p)" +
                                         "\nExite (e)");
                                      char voroudi = Convert.ToChar(Console.ReadLine());
                                      switch (voroudi)
@@ -198,6 +207,9 @@ namespace Harry_Potter
                                                                 int Cabin_number = random.Next(1, 10);
                                                                 int Seat_number = random.Next(1, 4);
 
+                                                                invited_students[x].cabin_number = Cabin_number;
+                                                                invited_students[x].seat_number = Seat_number;
+
                                                                 DateTime now = DateTime.Now;
                                                                 int month = now.Month;
                                                                 int year = now.Year;
@@ -215,7 +227,7 @@ namespace Harry_Potter
                                                                 invited_students[x].traintime = new DateTime(year, month, day);
                                                                 invited_students[x].Letter = "Congratulations! You have been invited to Hogwarts :)" +
                                                                     $"\nDeparture date of your train:{invited_students[x].traintime}" +
-                                                                    $"\nCabin : {Cabin_number}\nSeat : {Seat_number}";
+                                                                    $"\nCabin : {invited_students[x].cabin_number}\nSeat : {invited_students[x].seat_number}";
 
 
                                                                 Console.WriteLine("Successful!");
@@ -236,6 +248,70 @@ namespace Harry_Potter
                                                     }
                                                 }
 
+                                                break;
+                                            }
+                                        case 'p':
+                                            {
+                                                foreach (Plant plant in dumbledore.reqplnt)
+                                                {
+                                                    Console.WriteLine($"{plant.Name}");
+                                                }
+
+                                                foreach (Plant plant1 in dumbledore.reqplnt)
+                                                {
+                                                    plant1.number += 3;
+                                                }
+
+                                                Console.WriteLine("plants added to forest.");
+
+                                                break;
+                                            }
+
+                                        case 'r':
+                                            {
+                                                int i = 0;
+                                                foreach (int x in dumbledore.back_ticket_request_users)
+                                                {
+                                                    i++;
+                                                    Console.WriteLine(i + " : " + students[x].FirstName + " " + students[x].LastName);
+                                                    Console.WriteLine("Do you accept the request? ( yes(y) / no(n) )");
+                                                    char vorudi = Convert.ToChar(Console.ReadLine());
+
+                                                    switch (vorudi)
+                                                    {
+                                                        case 'y':
+                                                            {
+                                                                Random random = new Random();
+                                                                int day = random.Next(1, 28);
+                                                                int Cabin_number = random.Next(1, 10);
+                                                                int Seat_number = random.Next(1, 4);
+
+                                                                DateTime now = DateTime.Now;
+                                                                int month = now.Month;
+                                                                int year = now.Year;
+                                                                int nowday = now.Day;
+                                                                int nowmonth = now.Month;
+                                                                if (nowday > day)
+                                                                {
+                                                                    month = nowmonth + 1;
+                                                                    if (month > 12)
+                                                                    {
+                                                                        year = year + 1;
+                                                                        month = 1;
+                                                                    }
+                                                                }
+                                                                students[x].traintime = new DateTime(year, month, day);
+                                                                students[x].cabin_number = Cabin_number;
+                                                                students[x].seat_number = Seat_number;
+
+
+                                                                Console.WriteLine("Successful!");
+
+
+                                                                break;
+                                                            }
+                                                    }
+                                                }
                                                 break;
                                             }
 
@@ -278,6 +354,8 @@ namespace Harry_Potter
                                     Console.WriteLine($"hello {teachers[whichteacher].FirstName} {teachers[whichteacher].LastName}");
                                     Console.WriteLine("choose one : " +
                                         "\nSetting lesson plans (s)" +
+                                        "\nView the curriculum (v)" +
+                                        "\nCreate practice (c)" +
                                         "\nExite (e)");
 
                                     char vorudi = Convert.ToChar(Console.ReadLine());
@@ -285,12 +363,51 @@ namespace Harry_Potter
                                     {
                                         case 's':
                                             {
-                                                
-                                                
+                                                Lesson drs = new Lesson();
+                                                Console.Write("Enter the name of the course : ");
+                                                drs.Name = Console.ReadLine();
+                                                Console.Write("Enter class time : ");
+                                                drs.Time = Console.ReadLine();
+                                                drs.Teacher = teachers[whichteacher];
 
+                                                teachers[whichteacher].AddLesson(drs);
+                                                all_lessons.Add(drs);
 
                                                 break;
                                             }
+
+                                        case 'v':
+                                            {
+                                                teachers[whichteacher].PrintSchedule();
+                                                break;
+                                            }
+
+                                        case 'c':
+                                            {
+                                                bool bl = true;
+                                                while (bl)
+                                                {
+
+                                                    Plant plnt = new Plant();
+                                                    Console.Write("Enter the name of the plant / Exite : ");
+                                                    string vrd = Console.ReadLine();
+                                                    
+                                                    if (vrd == "Exite")
+                                                    {
+                                                        bl = false;
+                                                        break;
+                                                    }
+                                                    else
+                                                    {
+                                                        plnt.Name = vrd;
+                                                        Console.Write("Enter the number of the plant");
+                                                        plnt.number = Convert.ToInt32(Console.ReadLine());
+                                                        botanical.Exercise_plant.Add(plnt);
+                                                    }
+                                                }
+                                                break;
+                                            }
+
                                         case 'e':
                                             {
                                                 stayteacher = false;
@@ -327,17 +444,107 @@ namespace Harry_Potter
                             {
                                 bool staystudent = true;
 
-                                if (students[whichstudent].Term == 1 )
+                                if (students[whichstudent].Term > 1)
                                 {
-                                    Console.WriteLine("Welcome to Hogwarts. Go to the dining room.");
-                                    Console.ReadKey();
-                                    Console.WriteLine("You are in the restaurant.");
-                                    Console.ReadKey();
+                                    Console.WriteLine("Enroll lessons");
+                                    int i = 0;
+                                    foreach (Lesson lesson in all_lessons)
+                                    {
+                                        if (!students[whichstudent].passed_units.Contains(lesson))
+                                        {
+                                            Console.WriteLine($"{i}- {lesson.Name} : {lesson.Time}");
+                                            i++;
+                                        }
+                                    }
+                                    Console.Write("Enter the lesson number : ");
+                                    int x = Convert.ToInt32( Console.ReadLine() );
+
+                                    students[whichstudent].Enroll(all_lessons[x]);
+
                                 }
 
                                 while (staystudent)
                                 {
-                                    Console.WriteLine("");
+                                    Console.WriteLine("Choose one : " +
+                                        "\nView grades of lessons (v)" +
+                                        "\nRequest for a return ticket (r)" +
+                                        "\nDo homework (d)" +
+                                        "\nExite (e)");
+                                    char voudi = Convert.ToChar(Console.ReadLine());
+
+                                    switch (voudi)
+                                    {
+                                        case 'v':
+                                            {
+                                                foreach (Lesson lesson in students[whichstudent].lessons)
+                                                {
+                                                    if (lesson.grade >=0 && lesson.grade <= 100)
+                                                    {
+                                                        Console.WriteLine(lesson.grade);
+                                                    }
+                                                }
+
+                                                break;
+                                            }
+
+                                        case 'r':
+                                            {
+                                                dumbledore.back_ticket_request_users.Add(whichstudent);
+                                                Console.WriteLine("Your request done.");
+                                                break;
+                                            }
+
+                                        case 'd':
+                                            {
+                                                Console.WriteLine("Plants in practice");
+                                                foreach (Plant plant1 in botanical.Exercise_plant)
+                                                {
+                                                    Console.WriteLine($"{plant1.Name} ( *{plant1.number} )");
+                                                }
+
+                                                int i = 0;
+                                                Console.WriteLine("\n\nPlants in the forest : ");
+                                                foreach (Plant plant in botanical.all_plants)
+                                                {
+                                                    Console.WriteLine($"{i}- {plant.Name} ( *{plant.number} )");
+                                                }
+                                                bool x = true;
+                                                while (x)
+                                                {
+                                                    Console.WriteLine("Enter the number of the desired plant/ 2.request to add plant / 3.Exite");
+                                                    var vrdi = Convert.ToInt32(Console.ReadLine());
+                                                    if (vrdi == 3)
+                                                    {
+                                                        x = false;
+                                                        break;
+                                                    }
+                                                    else if (vrdi == 2)
+                                                    {
+                                                        Console.WriteLine("Enter the number of the desired plant");
+                                                        int m = Convert.ToInt32(Console.ReadLine());
+                                                        dumbledore.reqplnt.Add(botanical.all_plants[m]);
+                                                    }
+
+                                                    else
+                                                    {
+                                                        students[whichstudent].Collected_plants.Add(botanical.all_plants[vrdi]);
+                                                        botanical.all_plants[vrdi].number -= 1;
+
+                                                        Console.WriteLine("The plants added.");
+
+                                                    }
+                                                }
+
+                                                break;
+                                            }
+
+                                        case 'e':
+                                            {
+                                                staystudent = false;
+                                                break;
+                                            }
+                                    }
+
                                 }
 
                             }
