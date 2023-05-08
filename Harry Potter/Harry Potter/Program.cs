@@ -103,6 +103,17 @@ namespace Harry_Potter
 
                 file.Close();
             }
+
+            foreach (Teacher t in teachers)
+            {
+                Random random = new Random();
+                int x = random.Next(0, 1);
+                if (x == 1)
+                { t.TeachingAtTheSameTime = true; }
+                else
+                { t.TeachingAtTheSameTime = false; }
+            }
+
             while (true)
             {
                 Console.WriteLine(
@@ -163,8 +174,8 @@ namespace Harry_Potter
                                                     student.Letter = "Congratulations! You have been invited to Hogwarts :)" +
                                                         $"\nDeparture date of your train:{new DateTime(now.Year , month , day )}" +
                                                         $"\nCabin : {Cabin_number}\nSeat : {Seat_number}";
-                                                    Console.WriteLine(student.Letter);
                                                 }
+                                                Console.WriteLine("The letter was successfully sent to all students.");
                                                 break;
                                             }
                                         case 'e':
@@ -178,12 +189,54 @@ namespace Harry_Potter
                                 }
                                         
                             }
-                                
-
                             break;
                        }
                        case 2:
                        {
+                            Console.Write("User Name : ");
+                            string username = Console.ReadLine();
+                            Console.Write("Password : ");
+                            string password = Console.ReadLine();
+
+                            bool checkteacher = false;
+                            int whichteacher = 0;
+                            foreach (Teacher teacher in teachers)
+                            {
+                                if (teacher.UserName ==  username && teacher.Password == password)
+                                {
+                                    checkteacher = true;
+                                    break;
+                                }
+                                whichteacher++;
+                            }
+                            if (checkteacher)
+                            {
+                                bool stayteacher = true;
+                                while (stayteacher)
+                                {
+                                    Console.WriteLine($"hello {teachers[whichteacher].FirstName} {teachers[whichteacher].LastName}");
+                                    Console.WriteLine("choose one : " +
+                                        "\nSetting lesson plans (s)" +
+                                        "\nExite (e)");
+
+                                    char vorudi = Convert.ToChar(Console.ReadLine());
+                                    switch (vorudi)
+                                    {
+                                        case 's':
+                                            {
+                                                // اینو حالا حال ندارم بزنم بعد بزن
+                                                break;
+                                            }
+                                        case 'e':
+                                            {
+                                                stayteacher = false;
+                                                break;
+                                            }
+                                        default:
+                                            { break; }
+                                    }
+                                }
+                            }
                             break;
                        }
                        case 3:
