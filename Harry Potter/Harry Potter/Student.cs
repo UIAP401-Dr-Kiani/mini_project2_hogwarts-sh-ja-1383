@@ -11,5 +11,6 @@ namespace Harry_Potter
         public List<string> passed_units {  get; set; }
         public int Term { get; set; }
         public int RoomNumber { get; set; }
+        public DateTime traintime { get; set; }
     }
 }

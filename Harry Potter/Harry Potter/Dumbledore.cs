@@ -11,6 +11,7 @@ namespace Harry_Potter
         public List<Dormitory> dormitories { get; set; }
         string username = "Dumbeldore";
         string password = "dambel_pass";
+        public List <int> ticket_request_users { get; set; }
         
     }
 }

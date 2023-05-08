@@ -16,8 +16,10 @@ namespace Harry_Potter
         {
             List<Student> students = new List<Student>();
             List<Teacher> teachers = new List<Teacher>();
+            Dumbledore dumbledore = new Dumbledore();
+            dumbledore.UserName = "11111";
+            dumbledore.Password = "00000";
 
-            
             using (StreamReader file = new StreamReader("TXT_DATA.tsv"))
             {
                 string ln;
@@ -132,9 +134,7 @@ namespace Harry_Potter
                             string adminuser = Console.ReadLine();
                             Console.Write("Password: ");
                             string adminpass = Console.ReadLine();
-                            Dumbledore dumbledore = new Dumbledore();
-                            dumbledore.UserName = "11111";
-                            dumbledore.Password = "00000";
+                            
 
                             if (adminuser == dumbledore.UserName && adminpass == dumbledore.Password)
                             {
@@ -143,6 +143,7 @@ namespace Harry_Potter
                                 {
                                     Console.WriteLine("Choose one: " +
                                         "\nSending letters to authorized students (s)" +
+                                        "\nCheck ticket requests again (c)" +
                                         "\nExite (e)");
                                      char voroudi = Convert.ToChar(Console.ReadLine());
                                      switch (voroudi)
@@ -170,14 +171,75 @@ namespace Harry_Potter
                                                             month = 1;
                                                         }
                                                     }
-
+                                                    student.traintime = new DateTime(year, month, day);
                                                     student.Letter = "Congratulations! You have been invited to Hogwarts :)" +
-                                                        $"\nDeparture date of your train:{new DateTime(now.Year , month , day )}" +
+                                                        $"\nDeparture date of your train:{student.traintime}" +
                                                         $"\nCabin : {Cabin_number}\nSeat : {Seat_number}";
                                                 }
                                                 Console.WriteLine("The letter was successfully sent to all students.");
                                                 break;
                                             }
+
+                                        case 'c':
+                                            {
+                                                int i = 0;
+                                                foreach (int x in dumbledore.ticket_request_users)
+                                                {
+                                                    i++;
+                                                    Console.WriteLine(i + " : " + students[x].FirstName + " " + students[x].LastName);
+                                                    Console.WriteLine("Do you want to resubmit a ticket? ( yes(y) / no(n) )");
+                                                    char vorudi = Convert.ToChar(Console.ReadLine());
+
+                                                    switch (vorudi)
+                                                    {
+                                                        case 'y':
+                                                            {
+                                                                Random random = new Random();
+                                                                int day = random.Next(1, 28);
+                                                                int Cabin_number = random.Next(1, 10);
+                                                                int Seat_number = random.Next(1, 4);
+
+                                                                DateTime now = DateTime.Now;
+                                                                int month = now.Month;
+                                                                int year = now.Year;
+                                                                int nowday = now.Day;
+                                                                int nowmonth = now.Month;
+                                                                if (nowday > day)
+                                                                {
+                                                                    month = nowmonth + 1;
+                                                                    if (month > 12)
+                                                                    {
+                                                                        year = year + 1;
+                                                                        month = 1;
+                                                                    }
+                                                                }
+                                                                students[x].traintime = new DateTime(year, month, day);
+                                                                students[x].Letter = "Congratulations! You have been invited to Hogwarts :)" +
+                                                                    $"\nDeparture date of your train:{students[x].traintime}" +
+                                                                    $"\nCabin : {Cabin_number}\nSeat : {Seat_number}";
+
+
+                                                                Console.WriteLine("Successful!");
+
+
+                                                                break;
+                                                            }
+                                                        case 'n':
+                                                            {
+                                                                dumbledore.ticket_request_users.Remove(x);
+                                                                Console.WriteLine("OK");
+                                                                break;
+                                                            }
+                                                        default:
+                                                            {
+                                                                break;
+                                                            }
+                                                    }
+                                                }
+
+                                                break;
+                                            }
+
                                         case 'e':
                                             {
                                                  stayadmin = false;
@@ -241,10 +303,124 @@ namespace Harry_Potter
                        }
                        case 3:
                        {
+
+
+
                             break;
                        }
                        case 4:
                        {
+                            Console.Write("UserName : ");
+                            string username = Console.ReadLine();
+                            Console.Write("Password : ");
+                            string password = Console.ReadLine();
+
+                            bool checkstudent = false;
+                            int whichstudent = 0;
+
+                            foreach (Student student in students)
+                            {
+                                if (student.UserName == username && student.Password == password)
+                                {
+                                    checkstudent = true;
+                                    break;
+                                }
+                                whichstudent++;
+                            }
+
+                            if (checkstudent)
+                            {
+                                bool staystudent = true;
+                                while (staystudent)
+                                {
+                                    Console.WriteLine("Choose One : " +
+                                        "\nChecking if you have been invited to hagwarts (c)" +
+                                        "\nGo to train (g)" +
+                                        "\nExite (e)");
+
+                                    char vorudi = Convert.ToChar(Console.ReadLine()) ;
+                                    switch (vorudi)
+                                    {
+                                        case 'c':
+                                            { 
+                                                if (students[whichstudent].Letter == null)
+                                                {
+                                                    Console.WriteLine("Unfortunately, you are not invited.");
+                                                }
+                                                else
+                                                {
+                                                    Console.WriteLine(students[whichstudent].Letter);
+                                                }
+                                                break;
+                                            }
+
+                                        case 'g':
+                                            {
+                                                if (students[whichstudent].Letter == null)
+                                                {
+                                                    Console.WriteLine("Sorry! You cannot use this section becouse you are not invited.");
+                                                }
+                                                else
+                                                {
+                                                    if (students[whichstudent].traintime > DateTime.Now)
+                                                    {
+                                                        Console.WriteLine("Wait for the train to depart.");
+                                                    }
+                                                    else if (students[whichstudent].traintime == DateTime.Now)
+                                                    {
+                                                        Console.WriteLine("Get on the train.");
+                                                        Console.ReadKey();
+                                                        Console.WriteLine("You are on the train going to Hagwarts.");
+                                                    }
+                                                    else if (students[whichstudent].traintime < DateTime.Now)
+                                                    {
+                                                        Console.WriteLine("You arrived late. The train has left :( ");
+                                                        Console.WriteLine("Do you want to request a new ticket? ( yes(y) / no(n) )");
+                                                        char yn = Convert.ToChar(Console.ReadLine());
+                                                        switch (yn)
+                                                        {
+                                                            case 'y':
+                                                                {
+                                                                    dumbledore.ticket_request_users.Add(whichstudent);
+                                                                    Console.WriteLine("Your request done.");
+                                                                    break;
+                                                                }
+                                                            case 'n':
+                                                                {
+                                                                    Console.WriteLine("Ok!");
+                                                                    break;
+                                                                }
+                                                            default:
+                                                                {
+                                                                    break;
+                                                                }
+                                                        }
+                                                    }
+                                                }
+                                                break;
+                                            }
+
+                                        case 'e':
+                                            {
+                                                staystudent = false;
+                                                break;
+                                            }
+
+                                        default :
+                                            { 
+                                                break;
+                                            }
+                                    }
+
+
+
+                                }
+                            }
+
+                            
+
+                            
+
                             break;
                        }
 
