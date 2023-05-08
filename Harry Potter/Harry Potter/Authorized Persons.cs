@@ -8,7 +8,9 @@ namespace Harry_Potter
 {
     internal class Authorized_Persons : Person
     {
-        // برنامه درسی چیه؟ ننوشتمش هنوز
+
+        public Lesson[][] Curriculum;
+
         public enum Pet { rat , cat , owl}
         public Group Group { get; set; }
         public bool HavingSuitcase;
