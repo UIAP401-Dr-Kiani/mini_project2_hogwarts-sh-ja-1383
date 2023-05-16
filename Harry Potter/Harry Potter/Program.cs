@@ -66,7 +66,6 @@ namespace Harry_Potter
                                 {
                                     teacher.racetype = Person.RaceType.Muggle_blood;
                                 }
-                                teachers.Add(teacher);
                                 break;
                             }
                         case "student":
@@ -191,6 +190,14 @@ namespace Harry_Potter
                                         case 'c':
                                             {
                                                 int i = 0;
+
+                                                if (dumbledore.ticket_request_users == null)
+                                                {
+                                                    Console.WriteLine("There is not any request! ");
+                                                }
+
+
+                                                if (dumbledore.ticket_request_users !=  null)
                                                 foreach (int x in dumbledore.ticket_request_users)
                                                 {
                                                     i++;
@@ -252,24 +259,40 @@ namespace Harry_Potter
                                             }
                                         case 'p':
                                             {
-                                                foreach (Plant plant in dumbledore.reqplnt)
+                                                if (dumbledore.ticket_request_users == null)
                                                 {
-                                                    Console.WriteLine($"{plant.Name}");
+                                                    Console.WriteLine("There is not any request! ");
                                                 }
 
-                                                foreach (Plant plant1 in dumbledore.reqplnt)
+
+                                                if (dumbledore.reqplnt != null)
                                                 {
-                                                    plant1.number += 3;
+                                                    foreach (Plant plant in dumbledore.reqplnt)
+                                                    {
+                                                        Console.WriteLine($"{plant.Name}");
+                                                    }
+
+                                                    foreach (Plant plant1 in dumbledore.reqplnt)
+                                                    {
+                                                        plant1.number += 3;
+                                                    }
+
+                                                    Console.WriteLine("plants added to forest.");
                                                 }
-
-                                                Console.WriteLine("plants added to forest.");
-
                                                 break;
                                             }
 
                                         case 'r':
                                             {
+
+                                                if (dumbledore.back_ticket_request_users == null)
+                                                {
+                                                    Console.WriteLine("There is not any request!");
+                                                }
+
                                                 int i = 0;
+
+                                                if (dumbledore.back_ticket_request_users != null)
                                                 foreach (int x in dumbledore.back_ticket_request_users)
                                                 {
                                                     i++;
@@ -330,7 +353,7 @@ namespace Harry_Potter
                        }
                        case 2:
                        {
-                            Console.Write("User Name : ");
+                            Console.Write("UserName : ");
                             string username = Console.ReadLine();
                             Console.Write("Password : ");
                             string password = Console.ReadLine();
@@ -349,9 +372,10 @@ namespace Harry_Potter
                             if (checkteacher)
                             {
                                 bool stayteacher = true;
+
+                                Console.WriteLine($"hello {teachers[whichteacher].FirstName} {teachers[whichteacher].LastName}");
                                 while (stayteacher)
                                 {
-                                    Console.WriteLine($"hello {teachers[whichteacher].FirstName} {teachers[whichteacher].LastName}");
                                     Console.WriteLine("choose one : " +
                                         "\nSetting lesson plans (s)" +
                                         "\nView the curriculum (v)" +

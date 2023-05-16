@@ -9,8 +9,6 @@ namespace Harry_Potter
     internal class Dumbledore : Authorized_Persons
     {
         public List<Dormitory> dormitories { get; set; }
-        public string username = "Dumbeldore";
-        public string password = "dambel_pass";
         public List <int> ticket_request_users { get; set; }
         public List <int> back_ticket_request_users { get; set; }
         public List <Lesson> alllessons { get; set; }
