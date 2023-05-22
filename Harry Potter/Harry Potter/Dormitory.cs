@@ -47,6 +47,7 @@ namespace Harry_Potter
                     Code = (_floor * 100) + (_room * 10) + (_bed);
                 }
             }
+           get { return _code; }
         }
 
     }

@@ -21,11 +21,29 @@ namespace Harry_Potter
         
         public void Enroll (Lesson lesson)
         {
-            if (lesson.StudentCount < lesson.Capacity && lesson.Term <= Term)
+            if (lesson.StudentCount < lesson.Capacity)
             {
-                lesson.StudentCount++;
-                lessons.Add(lesson);
-                Console.WriteLine($"you enrolled in {lesson.Name}.");
+                bool canchoose = true;
+                foreach (Lesson lesson1 in lessons)
+                {
+                    if (lesson1.Time == lesson.Time)
+                    {
+                        canchoose = false;
+                        break;
+                    }
+                }
+
+                if (canchoose)
+                {
+                    lesson.StudentCount++;
+                    lessons.Add(lesson);
+                    Console.WriteLine($"you enrolled in {lesson.Name}.");
+                    lesson.Students.Add(this);
+                }
+                else
+                {
+                    Console.WriteLine($"you Cannot enroll in {lesson.Name}");
+                }
             }
             else
             {

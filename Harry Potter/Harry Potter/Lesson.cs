@@ -8,6 +8,7 @@ namespace Harry_Potter
 {
     internal class Lesson
     {
+        public List<Student> Students { get; set; }
         public string Time { get; set; }
         public int StudentCount { get; set; }
         public int Capacity { get; set; }
