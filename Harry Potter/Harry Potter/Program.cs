@@ -14,6 +14,7 @@ namespace Harry_Potter
     {
         static void Main(string[] args)
         {
+
             List<Student> invited_students = new List<Student>();
             List<Teacher> teachers = new List<Teacher>();
             List <Student> students = new List<Student>();
@@ -792,6 +793,8 @@ namespace Harry_Potter
 
                             if (checkstudent)
                             {
+                                int dormitorucode = Dormitory.setcode();
+                                Console.WriteLine($"your dormitory code: {dormitorucode/100}{(dormitorucode%100)/10}{dormitorucode%10}");
                                 if (students[whichstudent].Term > 1)
                                 {
                                     List<Lesson> lessonscanbechoosen = new List<Lesson>();

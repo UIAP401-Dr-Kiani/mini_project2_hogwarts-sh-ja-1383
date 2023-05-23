@@ -10,12 +10,7 @@ namespace Harry_Potter
     internal class Dormitory
     {
         private Group _group;
-        private int _floor = 0;
-        private int _room = 0;
-        private int _bed = 0;
-        private int Code = 000;
         public enum Gender { Male , Femaile}
-        private static int _code = 000;
 
         private Gender _gender;
         
@@ -25,30 +20,34 @@ namespace Harry_Potter
             _gender = gender;
         }
 
-        public int setcode
+        static int code ;
+        static int bed = -1;
+        static int room = 0;
+        static int floor = 0;
+        public static int setcode ()
         {
-            set {
-                if (_bed < 4)
+            if (bed <= 4)
+            {
+                bed++;
+            }
+            else
+            {
+                if (bed == 5)
                 {
-                    Code++;
+                    bed = 0;
+                    room++;
                 }
-                else
+                if (room == 10)
                 {
-                    if (_bed == 4)
-                    {
-                        _bed = 0;
-                        _room++;
-                    }
-                    if (_room == 9)
-                    {
-                        _room = 0;
-                        _floor++;
-                    }
-                    Code = (_floor * 100) + (_room * 10) + (_bed);
+                    room = 0;
+                    floor++;
                 }
             }
-           get { return _code; }
+
+            code = floor*100 + room*10 + bed;
+            return code;
         }
+
 
     }
 }
